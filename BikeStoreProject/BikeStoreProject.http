@@ -1,0 +1,6 @@
+@BikeStoreProject_HostAddress = http://localhost:5014
+
+GET {{BikeStoreProject_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
