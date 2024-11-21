@@ -1,5 +1,7 @@
 
+using BikeStoreApp.Services;
 using BikeStoreProject.Models;
+using BikeStoreProject.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace BikeStoreProject
@@ -13,6 +15,19 @@ namespace BikeStoreProject
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IBrandService, BrandService>();
+            builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<ICustomerService, CustomerService>();
+            builder.Services.AddScoped<IStoreService, StoreService>();
+            builder.Services.AddScoped<IStaffService, StaffService>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
+            builder.Services.AddScoped<IOrderItemService, OrderItemService>();
+            builder.Services.AddScoped<IStockService,StockService>();
+
+            builder.Services.AddAutoMapper(typeof(Program));
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

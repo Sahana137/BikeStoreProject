@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using BikeStoreApp.Models;
 using BikeStoreProject.Dto;
 using BikeStoreProject.Models;
 using Microsoft.EntityFrameworkCore;
@@ -8,9 +7,9 @@ namespace BikeStoreApp.Services
 {
     public class OrderService : IOrderService
     {
-        private readonly BikeStoreAppContext _context;
+        private readonly BikeStoreContext _context;
         private IMapper _mapper;
-        public OrderService(BikeStoreAppContext context, IMapper mapper)
+        public OrderService(BikeStoreContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
