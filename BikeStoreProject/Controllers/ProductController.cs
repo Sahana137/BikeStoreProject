@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BikeStoreProject.Controllers
 {
-    
+
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -80,7 +80,7 @@ namespace BikeStoreProject.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     new { message = "An error occurred while updating the product", error = ex.Message });
             }
-            
+
         }
 
         [HttpPatch("edit/{productId}")]
