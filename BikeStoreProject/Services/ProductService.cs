@@ -22,11 +22,11 @@ namespace BikeStoreProject.Services
             return _mapper.Map<IEnumerable<ProductDto>>(products);
         }
 
-     
+
 
         public async Task<bool> UpdateProductAsync(int productId, ProductCreateUpdateDto productDto)
         {
-            
+
             var product = await _context.Products.FindAsync(productId);
 
             if (product == null)
@@ -106,7 +106,7 @@ namespace BikeStoreProject.Services
 
             // Map the Product entity to ProductDto
             return _mapper.Map<ProductDto>(product);
-           
+
         }
 
         public async Task<IEnumerable<StoreProductDto>> GetNumberOfProductsSoldByEachStoreAsync()
@@ -134,11 +134,11 @@ namespace BikeStoreProject.Services
             .Include(p => p.Brand)
             .Select(p => new ProductDetailsDto
             {
-             // Use null-coalescing operator instead of null-conditional
-             CategoryName = p.Category != null ? p.Category.CategoryName : "No Category",
-             ProductName = p.ProductName,
-             BrandName = p.Brand != null ? p.Brand.BrandName : "No Brand"
-              })
+                // Use null-coalescing operator instead of null-conditional
+                CategoryName = p.Category != null ? p.Category.CategoryName : "No Category",
+                ProductName = p.ProductName,
+                BrandName = p.Brand != null ? p.Brand.BrandName : "No Brand"
+            })
             .ToListAsync();
 
         }
@@ -160,7 +160,7 @@ namespace BikeStoreProject.Services
             if (minStock == 1)
                 return Enumerable.Empty<ProductDto>(); // If no stock or all stock is 0
 
-            
+
             var products = await _context.Products
                 .Where(p => p.Stocks.Min(s => s.Quantity) == minStock) // Fetch products with the minimum stock
                 .ToListAsync();
